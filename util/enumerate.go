@@ -7,10 +7,10 @@ type WithIndex[T any] struct {
 	Value T
 }
 
-func Enumerate[T any](iter Iterator[T]) MapResultIter[T, WithIndex[T]] {
+func Enumerate[T any](iter Iterator[T]) Connector[T, WithIndex[T]] {
 	idx := 0
-	return MapResultIter[T, WithIndex[T]]{
-		mapF: func(elem T) WithIndex[T] {
+	return Connector[T, WithIndex[T]]{
+		mapFunc: func(elem T) WithIndex[T] {
 			withIndex := WithIndex[T]{
 				Idx:   idx,
 				Value: elem,
@@ -18,6 +18,6 @@ func Enumerate[T any](iter Iterator[T]) MapResultIter[T, WithIndex[T]] {
 			idx++
 			return withIndex
 		},
-		srcIter: iter,
+		src: iter,
 	}
 }

@@ -6,26 +6,26 @@ import (
 
 type MapFunc[F any, T any] func(elem F) T
 
-type MapResultIter[F any, T any] struct {
-	mapF    MapFunc[F, T]
-	srcIter Iterator[F]
+type Connector[F any, T any] struct {
+	mapFunc MapFunc[F, T]
+	src Iterator[F]
 }
 
-func (iter *MapResultIter[F, T]) Valid() bool {
-	return iter.srcIter.Valid()
+func (iter *Connector[F, T]) Valid() bool {
+	return iter.src.Valid()
 }
 
-func (iter *MapResultIter[F, T]) Value() T {
-	return iter.mapF(iter.srcIter.Value())
+func (iter *Connector[F, T]) Value() T {
+	return iter.mapFunc(iter.src.Value())
 }
 
-func (iter *MapResultIter[F, T]) Next() {
-	iter.srcIter.Next()
+func (iter *Connector[F, T]) Next() {
+	iter.src.Next()
 }
 
-func Map[F any, T any](iter Iterator[F], mapF MapFunc[F, T]) Iterator[T] {
-	return &MapResultIter[F, T]{
-		mapF:    mapF,
-		srcIter: iter,
+func Map[F any, T any](iter Iterator[F], mapFunc MapFunc[F, T]) Iterator[T] {
+	return &Connector[F, T]{
+		mapFunc: mapFunc,
+		src: iter,
 	}
 }

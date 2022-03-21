@@ -7,9 +7,6 @@ type Container[T any] interface {
 	Iter() Iterator[T]
 }
 
-type PairContainer[K any, V any] interface {
-}
-
 func Collect[C Container[T], T any](iter Iterator[T], container C) Container[T] {
 	for ; iter.Valid(); iter.Next() {
 		container.Push(iter.Value())
