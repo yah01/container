@@ -1,4 +1,4 @@
-package iter
+package container
 
 type Iterable[T any] interface {
 	Iter() Iterator[T]

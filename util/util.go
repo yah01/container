@@ -1,7 +1,7 @@
 package util
 
 import (
-	. "github.com/yah01/container/iter"
+	. "github.com/yah01/container"
 	"golang.org/x/exp/constraints"
 )
 

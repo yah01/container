@@ -4,11 +4,11 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/yah01/container/cslice"
+	. "github.com/yah01/container"
 )
 
 func TestEnumerate(t *testing.T) {
-	slice := cslice.NewSlice(5, 4, 3, 2, 1)
+	slice := NewSlice(5, 4, 3, 2, 1)
 	indexIter := Enumerate(slice.Iter())
 
 	idx := 0

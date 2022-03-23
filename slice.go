@@ -1,6 +1,5 @@
-package cslice
+package container
 
-import . "github.com/yah01/container/iter"
 
 type Slice[T any] struct {
 	inner []T

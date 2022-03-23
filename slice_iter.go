@@ -1,6 +1,4 @@
-package cslice
-
-import . "github.com/yah01/container/iter"
+package container
 
 var (
 	_ Iterator[int] = &SliceIterator[int]{}

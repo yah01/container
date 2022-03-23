@@ -1,6 +1,6 @@
 package util
 
-import . "github.com/yah01/container/iter"
+import . "github.com/yah01/container"
 
 type WithIndex[T any] struct {
 	Idx   int
